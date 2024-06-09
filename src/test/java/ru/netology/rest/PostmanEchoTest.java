@@ -8,15 +8,12 @@ class PostmanEchoTest {
     @Test
     void shouldReturnSenData() {
         String text = "Hi";
-        // Given - When - Then
-// Предусловия
         given()
                 .baseUri("https://postman-echo.com")
-                .body("text") // отправляемые данные (заголовки и query можно выставлять аналогично)
-// Выполняемые действия
+                .contentType("text/plain; charset=UTF-8")
+                .body("some data")
                 .when()
                 .post("/post")
-// Проверки
                 .then()
                 .statusCode(200)
                 .body("data",org.hamcrest.Matchers.equalTo(text));
